@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://script/TestDino.gd" type="Script" id=2]
+[ext_resource path="res://sprites/spr_dino_1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/spr_dino_0.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.5
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 13.3012
+height = 24.9469
+
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+"Dinos",
+]]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )

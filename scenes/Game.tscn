@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/bg_0.png" type="Texture" id=2]
+[ext_resource path="res://scenes/player/BallTurtle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://script/Game.gd" type="Script" id=5]
+
+[node name="Game" type="Node"]
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 400.0
+margin_bottom = 400.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ContenDinos" type="Node2D" parent="."]
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+margin_left = -0.735107
+margin_top = 24.258
+margin_right = -0.735077
+margin_bottom = 24.258
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchor_right = 1.0
+margin_left = 20.0
+margin_right = -20.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="HUD/MarginContainer"]
+margin_right = 560.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.705882, 0.705882, 0.705882, 1 )
+text = "Score"
+
+[node name="Life" type="Label" parent="HUD/MarginContainer"]
+margin_right = 560.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.705882, 0.705882, 0.705882, 1 )
+text = "Life"
+align = 2
+
+[node name="Balls" type="Label" parent="HUD/MarginContainer"]
+margin_right = 560.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.705882, 0.705882, 0.705882, 1 )
+text = "Balls"
+align = 1
+
+[node name="Paredes" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionI" type="CollisionPolygon2D" parent="Paredes" groups=[
+"wall",
+]]
+polygon = PoolVector2Array( -4.19391, 619.037, -3.7356, -1.84312, 97.9, -2.90002, 93.1802, 620.469 )
+
+[node name="CollisionD" type="CollisionPolygon2D" parent="Paredes" groups=[
+"wall",
+]]
+position = Vector2( 506.918, -2.86395 )
+polygon = PoolVector2Array( -4.19391, 619.037, -3.7356, -1.84312, 97.9, -2.90002, 93.1802, 620.469 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 280.623, 504.87 )
+
+[node name="BallTurtle" parent="." instance=ExtResource( 3 )]
+position = Vector2( 327.745, 242.601 )

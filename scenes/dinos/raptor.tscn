@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/spr_raptor_2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/spr_raptor_1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/spr_raptor_0.png" type="Texture" id=3]
+[ext_resource path="res://script/raptor.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.83382
+height = 47.4345
+
+[node name="raptor" type="Area2D" groups=[
+"Dinos",
+]]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_raptor_area_entered"]
