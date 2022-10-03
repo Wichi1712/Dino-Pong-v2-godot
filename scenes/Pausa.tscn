@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://script/Pausa.gd" type="Script" id=1]
+[ext_resource path="res://sprites/pause.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Turtle.png" type="Texture" id=3]
+
+[node name="Pausa" type="Control"]
+pause_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Efect" type="Tween" parent="."]
+pause_mode = 2
+
+[node name="Botons" type="Control" parent="."]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Botons"]
+pause_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Botons/CanvasLayer"]
+pause_mode = 2
+margin_left = -450.0
+margin_top = 100.0
+margin_right = -50.0
+margin_bottom = 500.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonResume" type="Button" parent="Botons/CanvasLayer/TextureRect"]
+pause_mode = 2
+margin_left = 100.0
+margin_top = 190.0
+margin_right = 300.0
+margin_bottom = 228.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonExit" type="Button" parent="Botons/CanvasLayer/TextureRect"]
+pause_mode = 2
+margin_left = 100.0
+margin_top = 260.0
+margin_right = 300.0
+margin_bottom = 298.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spr_selector" type="Sprite" parent="Botons/CanvasLayer/TextureRect"]
+pause_mode = 2
+position = Vector2( 100, 190 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 20 )
