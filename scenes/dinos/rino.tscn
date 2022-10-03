@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/spr_rino_0.png" type="Texture" id=1]
+[ext_resource path="res://sprites/spr_rino_1.png" type="Texture" id=2]
+[ext_resource path="res://script/rino.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 12.2682
+height = 54.4672
+
+[node name="rino" type="Area2D" groups=[
+"Dinos",
+]]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7.04205 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_rino_area_entered"]

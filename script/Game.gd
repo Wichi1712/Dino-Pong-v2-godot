@@ -4,9 +4,12 @@ var screenSize = Vector2()
 var numeroDinos = 10
 #var numBalls = 3
 var dino = preload("res://scenes/dinos/Dino.tscn")
-var Dino2 = preload("res://scenes/dinos/raptor.tscn")
+var raptor = preload("res://scenes/dinos/raptor.tscn")
+var rino = preload("res://scenes/dinos/rino.tscn")
+var blueTurlte = preload("res://scenes/dinos/blueTurtle.tscn")
 var TestDino = preload("res://scenes/dinos/TestDino.tscn")
 var gOver = preload("res://scenes/Over.tscn").instance()
+
 
 func _ready():
 	OS.center_window()#centrar ventana
@@ -61,7 +64,7 @@ func _process(_delta):
 #			Enemy.position = Vector2(rand_range(0,screensize.x), rand_range(0,screensize.y))
 #			$ContenEnenigo.add_child(Enemy)
 
-
+#cada vez que se acaba los dinos el nivel del juego incrementa en 1
 	if $ContenDinos.get_child_count() == 0:
 		crea_dinos()
 		global_var.levelGame +=1
@@ -69,16 +72,24 @@ func _process(_delta):
 #Crea dos tipos de dinos en posicion aleatoria
 func crea_dinos():
 	for i in range(numeroDinos):
-		var D = dino.instance()
-		var D2 = Dino2.instance()
+		var Dino = dino.instance()
+		var Raptor = raptor.instance()
+		var Rino = rino.instance()
+		var BlueTurtle = blueTurlte.instance()
 		#var tstDino = TestDino.instance()
 		randomize()
-		D.position = Vector2(rand_range(100,screenSize.x - 100),rand_range(-60,-560))
-		#tstDino.position = Vector2(rand_range(85,screenSize.x - 85),rand_range(-60,-560))
-		D2.position = Vector2(rand_range(100,screenSize.x - 100),rand_range(-60,-560))
+		var dinoRandom = randi() % 5
+		Dino.position = Vector2(rand_range(100,screenSize.x - 100),rand_range(-60,-560))
+		Raptor.position = Vector2(rand_range(100,screenSize.x - 100),rand_range(-60,-560))
+		Rino.position = Vector2(rand_range(100,screenSize.x - 100),rand_range(-60,-560))
+		BlueTurtle.position = Vector2(rand_range(100,screenSize.x - 100),rand_range(-60,-560))
 		#for d in range(0,20):
-		if i < numeroDinos/2:
-			$ContenDinos.add_child(D)
-			pass
+		if dinoRandom == 0: ##i < numeroDinos/2:
+			$ContenDinos.add_child(Raptor)
+		elif dinoRandom == 1:## i < numeroDinos/3:
+			$ContenDinos.add_child(Rino)
+		elif dinoRandom == 2:
+			$ContenDinos.add_child(BlueTurtle)
 		else:
-			$ContenDinos.add_child(D2)
+			$ContenDinos.add_child(Dino)
+			

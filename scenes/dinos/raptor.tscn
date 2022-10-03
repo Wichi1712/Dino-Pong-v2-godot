@@ -1,9 +1,35 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/spr_raptor_2.png" type="Texture" id=1]
 [ext_resource path="res://sprites/spr_raptor_1.png" type="Texture" id=2]
 [ext_resource path="res://sprites/spr_raptor_0.png" type="Texture" id=3]
 [ext_resource path="res://script/raptor.gd" type="Script" id=4]
+[ext_resource path="res://sprites/spr_polvo_0.png" type="Texture" id=5]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.183486, 0.311927, 0.481651 )
+colors = PoolColorArray( 0.793419, 0.765526, 0.765526, 1, 0.930138, 0.904705, 0.904705, 1, 0.97491, 0.97491, 0.97491, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.979253, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 6.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 3.0
+scale = 0.5
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,9 +48,17 @@ height = 47.4345
 ]]
 script = ExtResource( 4 )
 
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0, -15 )
+amount = 50
+lifetime = 8.96
+speed_scale = 2.05
+process_material = SubResource( 7 )
+texture = ExtResource( 5 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

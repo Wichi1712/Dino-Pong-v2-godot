@@ -1,20 +1,14 @@
 extends "res://script/Dino.gd"
 
-var dust = preload("res://scenes/DustDino.tscn")
 
-
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	velocidad = 180
-	valor = 30
-	pass # Replace with function body.
+	velocidad = 100
+	valor = 20
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
-
-func _on_raptor_area_entered(area):
+func _on_rino_area_entered(area):
 	if area.is_in_group("ball"):
 		#Si el estado de ball es "stop" y estado de player es "life"
 		#Entonces se ejecuta la funcion shockPlayer de Player

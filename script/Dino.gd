@@ -1,10 +1,13 @@
 extends Area2D
 
-var velocidad = 100
+var velocidad
+var valor
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	velocidad = 100
+	valor = 10
 	pass # Replace with function body.
 
 
@@ -27,6 +30,10 @@ func _on_Dino_area_entered(area):
 			#global_var.statePlayer = "shock"
 			get_parent().get_node("../Player").shockPlayer()
 		else:
-			global_var.score +=1
+			global_var.score +=valor
+			var shockDino = preload("res://scenes/DustDino.tscn").instance()
+			shockDino.position = self.position
+			get_tree().root.add_child(shockDino)
+			shockDino.get_node("Label").text = str(valor)
 			queue_free()
 			

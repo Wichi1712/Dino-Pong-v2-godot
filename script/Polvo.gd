@@ -1,17 +1,17 @@
 extends AnimatedSprite
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	$Label.text = ""
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if frame >= 7: queue_free()
-	pass
+	if frame >= 7:
+		playing = false
+		frames = null # queue_free()
+
+
+
+func _on_TiempoTexto_timeout():
+	queue_free()

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/spr_badTurtle_1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/spr_badTurtle_0.png" type="Texture" id=2]
+[ext_resource path="res://script/blueTurtle.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 20.9953
+height = 54.4672
+
+[node name="blueTurtle" type="Area2D" groups=[
+"Dinos",
+]]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_blueTurtle_area_entered"]

@@ -13,7 +13,7 @@ func _ready():
 	#z_index = 1#profundidad con respecto a las demas imagenes
 	posIni = get_viewport_rect().size
 	#position.x = posIni.x/2
-	position.y = get_node("../Player").position.y - 30
+	position.y = get_node("../Player").position.y - 25
 	
 	direccion = Vector2(dirX,-dirY)
 	global_var.stateBall = "stop"
@@ -46,7 +46,7 @@ func moveBall(delta):
 			#Se ubica nuevamente en la posicion de player
 			if (is_instance_valid(get_node("../Player")) && global_var.statePlayer != "shock"):
 				position.x = get_node("../Player").position.x #global_var.posPlayer
-				position.y = get_node("../Player").position.y - 30
+				position.y = get_node("../Player").position.y - 25
 			else:
 				#Si no se encuentra el player enviamos el ball fuera de pantalla
 				position.x = global_var.screenSize.x + 100
