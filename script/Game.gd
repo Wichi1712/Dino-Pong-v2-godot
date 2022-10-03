@@ -45,9 +45,9 @@ func _process(_delta):
 	#print("SCREEN: " + str(screenSize))
 	
 	#Actualiza HUD
-	$HUD/MarginContainer/Score.text = "Score " + str(global_var.score)
-	$HUD/MarginContainer/Life.text = "Life " + str(global_var.numLifes)
-	$HUD/MarginContainer/Balls.text = "Balls " + str(global_var.numBalls)
+	$HUD/Score.text = str(global_var.score)
+	$HUD/Life.text  = "x " + str(global_var.numLifes)
+	$HUD/Balls.text = "x " + str(global_var.numBalls)
 	
 #	if $ContenEnenigo.get_child_count() == 0:
 #		level+=1

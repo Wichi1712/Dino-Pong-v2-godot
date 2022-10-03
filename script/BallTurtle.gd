@@ -5,10 +5,12 @@ var dirX = 250 #  = rand_range(-250,250)
 var dirY = 250
 var direccion = Vector2.ZERO
 #var move = Vector2()
+#onready var polvo = preload("res://scenes/Polvo.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#z_index = 1#profundidad con respecto a las demas imagenes
 	posIni = get_viewport_rect().size
 	#position.x = posIni.x/2
 	position.y = get_node("../Player").position.y - 30
@@ -30,6 +32,7 @@ func moveBall(delta):
 	#Movimimiento
 	match global_var.stateBall:
 		"stop":
+			$Particles2D.emitting = false;
 			#Establece la direccion inicial en el eje X
 			if Input.is_action_pressed("ui_left"):
 				dirX = -250
@@ -50,7 +53,11 @@ func moveBall(delta):
 				#queue_free()
 		
 		"move":
+#			var polvos = polvo.instance()
+#			get_parent().get_node("../Game").add_child(polvos)
+#			polvos.position = self.position
 			#rotacion de ballon
+			$Particles2D.emitting = true;
 			$Sprite.rotation_degrees += 5
 			
 			direccion.x = dirX

@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/bg_0.png" type="Texture" id=2]
 [ext_resource path="res://scenes/player/BallTurtle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/score.png" type="Texture" id=4]
 [ext_resource path="res://script/Game.gd" type="Script" id=5]
+[ext_resource path="res://sprites/RockyIcon.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Turtle.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Pausa.tscn" type="PackedScene" id=8]
 
 [node name="Game" type="Node"]
 script = ExtResource( 5 )
@@ -28,40 +32,96 @@ margin_right = -0.735077
 margin_bottom = 24.258
 __meta__ = {
 "_edit_group_": true,
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD"]
-anchor_right = 1.0
-margin_left = 20.0
-margin_right = -20.0
-margin_bottom = 14.0
+[node name="Spr_RockyIcon" type="Sprite" parent="HUD"]
+visible = false
+position = Vector2( 25, 15 )
+texture = ExtResource( 6 )
+
+[node name="Spr_score" type="Sprite" parent="HUD"]
+visible = false
+position = Vector2( 25, 45 )
+scale = Vector2( 0.25, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="Spr_ballIcon" type="Sprite" parent="HUD"]
+visible = false
+position = Vector2( 10, 60 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="TextureLife" type="TextureRect" parent="HUD"]
+margin_left = 10.0
+margin_right = 42.0
+margin_bottom = 34.0
+texture = ExtResource( 6 )
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="HUD/MarginContainer"]
-margin_right = 560.0
-margin_bottom = 14.0
+[node name="Life" type="Label" parent="HUD"]
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 80.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.705882, 0.705882, 0.705882, 1 )
-text = "Score"
+text = "x 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Life" type="Label" parent="HUD/MarginContainer"]
-margin_right = 560.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0.705882, 0.705882, 0.705882, 1 )
-text = "Life"
-align = 2
+[node name="TextureScore" type="TextureRect" parent="HUD"]
+margin_left = 220.0
+margin_top = -70.0
+margin_right = 620.0
+margin_bottom = 335.0
+rect_scale = Vector2( 0.25, 0.3 )
+texture = ExtResource( 4 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Balls" type="Label" parent="HUD/MarginContainer"]
-margin_right = 560.0
-margin_bottom = 14.0
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 300.0
+margin_top = -13.0
+margin_right = 330.0
+margin_bottom = 0.999999
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.705882, 0.705882, 0.705882, 1 )
-text = "Balls"
-align = 1
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureBall" type="TextureRect" parent="HUD"]
+margin_left = 10.0
+margin_top = 38.0
+margin_right = 42.0
+margin_bottom = 70.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Balls" type="Label" parent="HUD"]
+margin_left = 50.0
+margin_top = 45.0
+margin_right = 80.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.705882, 0.705882, 0.705882, 1 )
+text = "x 0"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Paredes" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -71,16 +131,26 @@ __meta__ = {
 [node name="CollisionI" type="CollisionPolygon2D" parent="Paredes" groups=[
 "wall",
 ]]
+visible = false
 polygon = PoolVector2Array( -4.19391, 619.037, -3.7356, -1.84312, 97.9, -2.90002, 93.1802, 620.469 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionD" type="CollisionPolygon2D" parent="Paredes" groups=[
 "wall",
 ]]
+visible = false
 position = Vector2( 506.918, -2.86395 )
 polygon = PoolVector2Array( -4.19391, 619.037, -3.7356, -1.84312, 97.9, -2.90002, 93.1802, 620.469 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 280.623, 504.87 )
 
 [node name="BallTurtle" parent="." instance=ExtResource( 3 )]
 position = Vector2( 327.745, 242.601 )
+
+[node name="Pausa" parent="." instance=ExtResource( 8 )]
