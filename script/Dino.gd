@@ -15,11 +15,12 @@ func _ready():
 func _physics_process(delta):
 	position.y += velocidad * delta
 	
-	#Vuelve a la posicion inicial
+	#Vuelve a la posicion inicial si sobrepasa el borde inferior de la pantalla
 	if position.y > global_var.screenSize.y + 60:
 		randomize()
 		position.x = rand_range(100,global_var.screenSize.x - 100)
 		position.y = rand_range(-60,-560)
+		global_var.lostDinos +=10
 
 
 func _on_Dino_area_entered(area):

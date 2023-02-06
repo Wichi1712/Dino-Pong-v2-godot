@@ -15,8 +15,11 @@ _global_script_class_icons={
 
 [application]
 
-config/name="DinoPong_V2"
-config/icon="res://icon.png"
+config/name="DinoPong"
+config/description="Basado en el juego retro pong"
+run/main_scene="res://scenes/Menu.tscn"
+boot_splash/image="res://sprites/Turtle.png"
+config/icon="res://sprites/Turtle.png"
 
 [autoload]
 
@@ -25,6 +28,7 @@ global_var="*res://variablesGlobales/global_var.gd"
 [display]
 
 window/size/width=600
+window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

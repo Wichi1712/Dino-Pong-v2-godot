@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+#SOLO PARA PRUEBA NO SE USO EN EL JUEGO
+
 var SPEED = 90
 var velocity = Vector2(0,30)
 

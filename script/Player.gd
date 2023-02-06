@@ -24,7 +24,7 @@ func _ready():
 	#Posicion inicial
 	screenSize = get_viewport_rect().size
 	position.x = screenSize.x / 2
-	position.y = screenSize.y - 40
+	position.y = screenSize.y - 80
 	#Color(0.2, 1.0, 0.7, 0.1)
 
 

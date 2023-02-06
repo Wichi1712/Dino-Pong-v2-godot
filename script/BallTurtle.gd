@@ -4,22 +4,15 @@ var posIni
 var dirX = 250 #  = rand_range(-250,250)
 var dirY = 250
 var direccion = Vector2.ZERO
-#var move = Vector2()
-#onready var polvo = preload("res://scenes/Polvo.tscn")
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	#z_index = 1#profundidad con respecto a las demas imagenes
 	posIni = get_viewport_rect().size
-	#position.x = posIni.x/2
 	position.y = get_node("../Player").position.y - 25
 	
 	direccion = Vector2(dirX,-dirY)
 	global_var.stateBall = "stop"
 	
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,6 +31,7 @@ func moveBall(delta):
 				dirX = -250
 			elif Input.is_action_pressed("ui_right"):
 				dirX = 250
+			else: dirX = 0
 			
 			#Establece la direccion en el eje Y como negativo
 			#para que el balon vaya hacia arriba
@@ -53,9 +47,6 @@ func moveBall(delta):
 				#queue_free()
 		
 		"move":
-#			var polvos = polvo.instance()
-#			get_parent().get_node("../Game").add_child(polvos)
-#			polvos.position = self.position
 			#rotacion de ballon
 			$Particles2D.emitting = true;
 			$Sprite.rotation_degrees += 5
@@ -71,10 +62,6 @@ func moveBall(delta):
 			elif position.x > 500:
 				dirX = -250
 		
-	#		if position.x < get_parent().get_node("../Game/Paredes/CollisionI").position.x + 100:
-	#			dirX = 400
-	#		if position.x > get_parent().get_node("../Game/Paredes/CollisionD").position.x:
-	#			dirX = -400
 			#Rebote vertical
 			if position.y < 0:
 				direccion.y = dirY# * delta
@@ -88,12 +75,7 @@ func moveBall(delta):
 				else:
 					global_var.stateGame = "gameOver"
 					#queue_free()
-				#direccion.y = -dirY# * delta
 				
-				
-			#print("ball" + str(dirX))
-	
-		
 
 
 func _on_BallTurtle_area_entered(area):
@@ -108,11 +90,6 @@ func _on_BallTurtle_area_entered(area):
 			dirX = -250
 			
 		audioShockDino()
-#		if area.position.y < position.y:
-#			dirY = -400
-#		elif area.position.y > position.y:
-#			dirY = 400
-	pass # Replace with function body.
 
 func audioShockDino():
 	var audioDinoShock = AudioStreamPlayer.new()

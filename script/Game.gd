@@ -17,6 +17,7 @@ func _ready():
 	screenSize = get_viewport().get_visible_rect().size
 	global_var.stateGame = "play"
 	global_var.screenSize = screenSize
+	get_node("TextureProgress").max_value = 300
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,36 +34,17 @@ func _process(_delta):
 			set_process(false)
 			pass
 	
-	
-	#Valor inicial del ball en el eje X
-	#Se comprueba que la instancia BallTurtle exista
-#	if global_var.stateBall == "stop":
-#		if (is_instance_valid(get_node("../BallTurtle"))):
-#			if Input.is_action_pressed("ui_left"):
-#				$BallTurtle.dirX = -400
-#			if Input.is_action_pressed("ui_right"):
-#				$BallTurtle.dirX = 400
-#			print("ball: " + global_var.stateBall)
-		#pass
-	
-	#print("SCREEN: " + str(screenSize))
-	
+
 	#Actualiza HUD
 	$HUD/Score.text = str(global_var.score)
 	$HUD/Life.text  = "x " + str(global_var.numLifes)
 	$HUD/Balls.text = "x " + str(global_var.numBalls)
 	
-#	if $ContenEnenigo.get_child_count() == 0:
-#		level+=1
-#		time_left += 5
-#		spawn_enemigo()#llama a la funcion spawn_enemigo
-#
-#	#Crea enemigos en posicion aleatoria
-#	func spawn_enemigo():
-#		for index in range(BASIC_LEVEL + level):
-#			var Enemy = Enemigo.instance()
-#			Enemy.position = Vector2(rand_range(0,screensize.x), rand_range(0,screensize.y))
-#			$ContenEnenigo.add_child(Enemy)
+	#$Leveldinos.rect_size.x = global_var.lostDinos
+	$TextureProgress.value = global_var.lostDinos
+	$TextureProgress/LostDinosIcon.position.x = $TextureProgress.value + 16
+	$TextureProgress/HomeIcon.position.x = $TextureProgress.max_value + 16
+	
 
 #cada vez que se acaba los dinos el nivel del juego incrementa en 1
 	if $ContenDinos.get_child_count() == 0:
@@ -71,7 +53,7 @@ func _process(_delta):
 
 #Crea dos tipos de dinos en posicion aleatoria
 func crea_dinos():
-	for i in range(numeroDinos):
+	for _i in range(numeroDinos):
 		var Dino = dino.instance()
 		var Raptor = raptor.instance()
 		var Rino = rino.instance()
@@ -93,3 +75,9 @@ func crea_dinos():
 		else:
 			$ContenDinos.add_child(Dino)
 			
+
+
+func _on_TextureProgress_value_changed(value):
+	if value >= $TextureProgress.max_value:
+		global_var.stateGame = "gameOver"
+	pass # Replace with function body.

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://sprites/GameOver.png" type="Texture" id=1]
 [ext_resource path="res://script/Over.gd" type="Script" id=2]
+[ext_resource path="res://sprites/Turtle.png" type="Texture" id=3]
 
 [node name="Over" type="Control"]
 anchor_right = 1.0
@@ -26,6 +27,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_left = 153.57
 margin_top = 347.421
 margin_right = 328.57
@@ -34,3 +36,7 @@ color = Color( 0.988235, 0.972549, 0.0313726, 0.376471 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SelectorGameOver" type="Sprite" parent="."]
+position = Vector2( 190, 385 )
+texture = ExtResource( 3 )

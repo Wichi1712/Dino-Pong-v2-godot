@@ -4,6 +4,7 @@ extends Node
 var reloj = 0
 var numLifes = 3
 var numBalls = 3
+var lostDinos = 0
 var stateGame = ""
 var levelGame = 0
 var stateBall = ""
@@ -22,3 +23,4 @@ func reload():
 	statePlayer = "life"
 	stateBall = ""
 	stateGame = ""
+	lostDinos = 0
