@@ -48,7 +48,7 @@ func moveBall(delta):
 		
 		"move":
 			#rotacion de ballon
-			$Particles2D.emitting = true;
+			$Particles2D.emitting = true
 			$Sprite.rotation_degrees += 5
 			
 			direccion.x = dirX
@@ -59,8 +59,10 @@ func moveBall(delta):
 			#Rebote horizontal
 			if position.x < 100:
 				dirX = 250
+				colisionSolid();
 			elif position.x > 500:
 				dirX = -250
+				colisionSolid();
 		
 			#Rebote vertical
 			if position.y < 0:
@@ -98,3 +100,11 @@ func audioShockDino():
 	audioDinoShock.volume_db = -5
 	audioDinoShock.play()
 	pass
+
+func colisionSolid():
+	var audioColisionSolid = AudioStreamPlayer.new()
+	audioColisionSolid.stream = load("res://sounds/colision0.wav")
+	add_child(audioColisionSolid)
+	audioColisionSolid.volume_db = 2
+	audioColisionSolid.play()
+	

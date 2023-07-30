@@ -15,12 +15,12 @@ animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
-"speed": 4.0
+"speed": 2.0
 } ]
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 6
+frame = 2
 speed_scale = 3.0
 playing = true
 script = ExtResource( 1 )
@@ -30,6 +30,7 @@ margin_left = -5.0
 margin_top = -5.0
 margin_right = 7.0
 margin_bottom = 9.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "\"\""
 align = 1
 valign = 1

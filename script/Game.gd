@@ -7,7 +7,7 @@ var dino = preload("res://scenes/dinos/Dino.tscn")
 var raptor = preload("res://scenes/dinos/raptor.tscn")
 var rino = preload("res://scenes/dinos/rino.tscn")
 var blueTurlte = preload("res://scenes/dinos/blueTurtle.tscn")
-var TestDino = preload("res://scenes/dinos/TestDino.tscn")
+#var TestDino = preload("res://scenes/dinos/TestDino.tscn")
 var gOver = preload("res://scenes/Over.tscn").instance()
 
 

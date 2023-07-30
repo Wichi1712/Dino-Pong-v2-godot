@@ -5,7 +5,7 @@ var rocky = load("res://scenes/player/TestPlayer.tscn")
 
 func _ready():
 	#Permite cambiar el color del shader en material
-	$AnimatedSprite.material.set_shader_param("color_afectar", Color(0.0,0.1,0.1,0.5))
+	$AnimatedSprite.material.set_shader_param("color_afectar", Color(0.1,0.1,0.1,0.5))
 	pass # Replace with function body.
 
 

@@ -12,7 +12,7 @@ void fragment()
 {
 	vec4 color_original = texture(TEXTURE,UV);
 	vec4 color_final = color_afectar * color_original;
-	color_final *= mod(TIME * 2.0, 1.0);
+	color_final *= mod(TIME * 4.0, 1.0);
 	COLOR = color_final;
 }"
 
@@ -37,6 +37,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 2 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
