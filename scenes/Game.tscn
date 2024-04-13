@@ -142,18 +142,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionI" type="CollisionPolygon2D" parent="Paredes" groups=[
-"wall",
-]]
+[node name="CollisionI" type="CollisionPolygon2D" parent="Paredes" groups=["wall"]]
 visible = false
 polygon = PoolVector2Array( -4.19391, 619.037, -3.7356, -1.84312, 97.9, -2.90002, 93.1802, 620.469 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionD" type="CollisionPolygon2D" parent="Paredes" groups=[
-"wall",
-]]
+[node name="CollisionD" type="CollisionPolygon2D" parent="Paredes" groups=["wall"]]
 visible = false
 position = Vector2( 506.918, -2.86395 )
 polygon = PoolVector2Array( -4.19391, 619.037, -3.7356, -1.84312, 97.9, -2.90002, 93.1802, 620.469 )
@@ -206,7 +202,6 @@ __meta__ = {
 [node name="LostDinosIcon" type="AnimatedSprite" parent="TextureProgress"]
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 centered = false
 
@@ -214,4 +209,5 @@ centered = false
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 14 )
 centered = false
+
 [connection signal="value_changed" from="TextureProgress" to="." method="_on_TextureProgress_value_changed"]

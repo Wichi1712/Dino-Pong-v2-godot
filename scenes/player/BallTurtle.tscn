@@ -28,9 +28,7 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
-[node name="BallTurtle" type="Area2D" groups=[
-"ball",
-]]
+[node name="BallTurtle" type="Area2D" groups=["ball"]]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -48,4 +46,5 @@ speed_scale = 4.31
 local_coords = false
 process_material = SubResource( 6 )
 texture = ExtResource( 3 )
+
 [connection signal="area_entered" from="." to="." method="_on_BallTurtle_area_entered"]
