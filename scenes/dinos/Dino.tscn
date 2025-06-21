@@ -14,9 +14,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=2]
 
-[node name="Dino" type="Area2D" groups=[
-"Dinos",
-]]
+[node name="Dino" type="Area2D" groups=["Dinos"]]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -24,9 +22,11 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
 shape = SubResource( 2 )
+
 [connection signal="area_entered" from="." to="." method="_on_Dino_area_entered"]

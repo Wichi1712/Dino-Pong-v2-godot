@@ -76,8 +76,9 @@ func crea_dinos():
 			$ContenDinos.add_child(Dino)
 			
 
-
+#Esta funcion trabaja con la textura de barra de dinos
+#para evitar que se ponga en modo game over comentar el global_var.stateGame
 func _on_TextureProgress_value_changed(value):
 	if value >= $TextureProgress.max_value:
 		global_var.stateGame = "gameOver"
-	pass # Replace with function body.
+	pass# Replace with function body.

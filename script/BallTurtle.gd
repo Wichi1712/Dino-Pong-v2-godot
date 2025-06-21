@@ -1,6 +1,8 @@
 extends Area2D
 
 var posIni
+var speedRotar = 10
+var rotar = 0
 var dirX = 250 #  = rand_range(-250,250)
 var dirY = 250
 var direccion = Vector2.ZERO
@@ -29,9 +31,13 @@ func moveBall(delta):
 			#Establece la direccion inicial en el eje X
 			if Input.is_action_pressed("ui_left"):
 				dirX = -250
+				rotar = -speedRotar
 			elif Input.is_action_pressed("ui_right"):
 				dirX = 250
-			else: dirX = 0
+				rotar = speedRotar
+			else:
+				dirX = 0
+				#rotar = 0
 			
 			#Establece la direccion en el eje Y como negativo
 			#para que el balon vaya hacia arriba
@@ -49,7 +55,7 @@ func moveBall(delta):
 		"move":
 			#rotacion de ballon
 			$Particles2D.emitting = true
-			$Sprite.rotation_degrees += 5
+			$Sprite.rotation_degrees += rotar
 			
 			direccion.x = dirX
 			#move = move_and_slide(direccion)
@@ -88,8 +94,10 @@ func _on_BallTurtle_area_entered(area):
 	if area.is_in_group("Dinos"):
 		if area.position.x < position.x:
 			dirX = 250
+			rotar = speedRotar
 		elif area.position.x > position.x:
 			dirX = -250
+			rotar = -speedRotar
 			
 		audioShockDino()
 

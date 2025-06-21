@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sprites/bg_1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/bg_0.png" type="Texture" id=2]
 [ext_resource path="res://scenes/player/BallTurtle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/score.png" type="Texture" id=4]
 [ext_resource path="res://script/Game.gd" type="Script" id=5]
@@ -27,14 +27,7 @@ animations = [ {
 script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 400.0
-margin_bottom = 400.0
-rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="ContenDinos" type="Node2D" parent="."]
 
