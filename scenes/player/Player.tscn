@@ -84,9 +84,7 @@ tracks/0/keys = {
 "values": [ 2, 3, 4, 5 ]
 }
 
-[node name="Player" type="Area2D" groups=[
-"Player",
-]]
+[node name="Player" type="Area2D" groups=["Player"]]
 position = Vector2( 310.089, 577.423 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -112,4 +110,5 @@ anims/walk = SubResource( 6 )
 
 [node name="AudioShockPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
